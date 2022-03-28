@@ -6,6 +6,7 @@
     <%= render 'layouts/admin/links/dashboard_link' %>
     <% if current_user.verified? == "Verified" %>
       <%= render 'layouts/admin/links/message_link' %>
+      <%= render 'layouts/admin/links/form_link' %>
       <%= render 'layouts/admin/links/profile_link' %>
       <%# <%= render 'layouts/admin/links/faq_link' %>
     <% end %>

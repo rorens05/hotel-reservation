@@ -1,0 +1,15 @@
+<div class="bg-white py-3 px-5 shadow mt-5 rounded">
+  <p id="notice"><%= notice %></p>
+  <p>
+    <strong>Content:</strong>
+    <%= @membership_withdrawal.content %>
+  </p>
+  <p>
+    <strong>Admin note:</strong>
+    <%= @membership_withdrawal.admin_note %>
+  </p>
+  <p>
+    <strong>Status:</strong>
+    <span class="status_tag <%= @membership_withdrawal.status.to_sym %>"><%= @membership_withdrawal.status %></span>
+  </p>
+</div>

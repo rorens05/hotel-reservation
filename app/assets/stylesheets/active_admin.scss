@@ -10,6 +10,7 @@
 
 .status_tag {
   &.active,
+  &.approved,
   &.verified,
   &.online,
   &.ready,
@@ -436,7 +437,7 @@
   background-image: url(/images/icon/records.png);
 }
 
-.menu_item#notification_requests a::before {
+.menu_item#notifications a::before {
   background-image: url(/images/icon/notifications.png);
 }
 
@@ -458,4 +459,22 @@
 
 .menu_item#admins a::before {
   background-image: url(/images/icon/admin.png);
+}
+
+.table {
+  th {
+    color: black !important;
+  }
+}
+
+#tabs.header-item .menu_item.current.has_nested .menu .menu_item a {
+  line-height: 18px;
+}
+
+.form-actions {
+  .btn {
+    width: auto !important;
+    padding: 10px !important;
+    display: inline-block;
+  }
 }

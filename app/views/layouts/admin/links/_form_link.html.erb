@@ -1,0 +1,23 @@
+<div class='px-3 link-container <%= @navigation_name == "form" ? 'active' : '' %>'>
+  <a
+    class='w-100 d-flex align-items-center text-align-left py-2'
+    href='#'
+    data-toggle='collapse'
+    data-target='#forms'
+    aria-expanded='true'
+    aria-controls='forms'
+  >
+    <i class="fas fa-comment-alt mr-3 icon"></i>
+    Forms
+  </a>
+  <div
+    id='forms'
+    class='collapse px-5'
+    aria-labelledby='headingOne'
+    data-parent='#accordion'
+  >
+    <a href="/membership_withdrawals" class='d-block pl-2 pb-3'>
+      Withdrawal Form
+    </a>
+  </div>
+</div>
