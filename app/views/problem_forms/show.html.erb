@@ -1,0 +1,22 @@
+<div class="bg-white py-3 px-5 shadow mt-5 rounded">
+  <p>
+    <strong>Date:</strong>
+    <%= format_date(@problem_form.date_of_incident) %> | <%= format_time(@problem_form.date_of_incident) %>
+  </p>
+  <p>
+    <strong>Place:</strong>
+    <%= @problem_form.place %>
+  </p>
+  <p>
+    <strong>Content:</strong>
+    <%= @problem_form.content %>
+  </p>
+  <p>
+    <strong>Admin note:</strong>
+    <%= @problem_form.admin_note %>
+  </p>
+  <p>
+    <strong>Status:</strong>
+    <span class="status_tag <%= @problem_form.status.to_sym %>"><%= @problem_form.status %></span>
+  </p>
+</div>

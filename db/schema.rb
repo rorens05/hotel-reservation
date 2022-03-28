@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_28_050930) do
+ActiveRecord::Schema.define(version: 2022_03_28_054312) do
 
   create_table "accounts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
@@ -141,6 +141,18 @@ ActiveRecord::Schema.define(version: 2022_03_28_050930) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "problem_forms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.datetime "date_of_incident"
+    t.string "place"
+    t.text "content"
+    t.text "admin_note"
+    t.integer "status", default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_problem_forms_on_user_id"
+  end
+
   create_table "provinces", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "region_id", null: false
     t.string "name"
@@ -244,6 +256,7 @@ ActiveRecord::Schema.define(version: 2022_03_28_050930) do
   add_foreign_key "membership_withdrawals", "users"
   add_foreign_key "messages", "admin_users"
   add_foreign_key "messages", "users"
+  add_foreign_key "problem_forms", "users"
   add_foreign_key "provinces", "regions"
   add_foreign_key "transactions", "accounts"
   add_foreign_key "transactions", "categories"

@@ -23,7 +23,7 @@ ActiveAdmin.register MembershipWithdrawal do
       end
       row :created_at
     end
-    para "I #{membership_withdrawal.user.name}, member of LDTC would like to withdraw my membership. This is due to the following reasons: #{membership_withdrawal.content}"
+    para "I #{membership_withdrawal.user.name}, member of LDTC would like to withdraw my membership. This is due to the following reasons: #{membership_withdrawal.content}. In relation to my request, I am expecting for the refund of my capital share and other interest corresponding to my withdrawal."
   end
 
 end

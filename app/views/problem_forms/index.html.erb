@@ -1,0 +1,26 @@
+<div class="bg-white py-3 px-5 shadow mt-5 rounded">
+  <p id="notice"><%= notice %></p>
+  <h1>Problem Forms</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Date of incident</th>
+        <th>Place</th>
+        <th>Status</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @problem_forms.each do |problem_form| %>
+        <tr>
+          <td><%= format_date(problem_form.date_of_incident) %> | <%= format_time(problem_form.date_of_incident) %> </td>
+          <td><%= problem_form.place %></td>
+          <td><span class="status_tag <%= problem_form.status.to_sym %>"><%= problem_form.status %></span></td>
+          <td><%= link_to 'Show', problem_form %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br>
+  <%= link_to 'New Problem Form', new_problem_form_path %>
+</div>

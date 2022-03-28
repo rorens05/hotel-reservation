@@ -9,14 +9,6 @@ class MembershipWithdrawalsController < InheritedResources::Base
     params.require(:membership_withdrawal).permit(:user_id, :content, :admin_note, :status)
   end
 
-  def custom_layout 
-    if action_name == 'index'
-       'dashboard'  
-    else
-       'application'
-    end
-  end
-
   def set_navigation_name 
     @navigation_name = "form"
   end
