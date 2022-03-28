@@ -1,0 +1,22 @@
+<div class="bg-white py-3 px-5 shadow mt-5 rounded">
+  <p id="notice"><%= notice %></p>
+  <% if @share_capital.image.attached? %>
+    <%= image_tag @share_capital.image, style: "height: 200px" %>
+  <% end %>
+  <p>
+    <strong>Amount:</strong>
+    <%= @share_capital.amount %>
+  </p>
+  <p>
+    <strong>Content:</strong>
+    <%= @share_capital.content %>
+  </p>
+  <p>
+    <strong>Admin note:</strong>
+    <%= @share_capital.admin_note %>
+  </p>
+  <p>
+    <strong>Status:</strong>
+    <td><span class="status_tag <%= @share_capital.status.to_sym %>"><%= @share_capital.status %></span></td>
+  </p>
+</div>

@@ -1,0 +1,1 @@
+json.partial! "share_capital_withdrawals/share_capital_withdrawal", share_capital_withdrawal: @share_capital_withdrawal

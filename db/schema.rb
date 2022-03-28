@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_28_054312) do
+ActiveRecord::Schema.define(version: 2022_03_28_060943) do
 
   create_table "accounts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
@@ -169,6 +169,28 @@ ActiveRecord::Schema.define(version: 2022_03_28_054312) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "share_capital_withdrawals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.decimal "amount", precision: 10
+    t.text "content"
+    t.text "admin_note"
+    t.integer "status", default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_share_capital_withdrawals_on_user_id"
+  end
+
+  create_table "share_capitals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.decimal "amount", precision: 10
+    t.text "content"
+    t.text "admin_note"
+    t.integer "status", default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_share_capitals_on_user_id"
+  end
+
   create_table "transactions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "account_id", null: false
     t.bigint "category_id", null: false
@@ -258,6 +280,8 @@ ActiveRecord::Schema.define(version: 2022_03_28_054312) do
   add_foreign_key "messages", "users"
   add_foreign_key "problem_forms", "users"
   add_foreign_key "provinces", "regions"
+  add_foreign_key "share_capital_withdrawals", "users"
+  add_foreign_key "share_capitals", "users"
   add_foreign_key "transactions", "accounts"
   add_foreign_key "transactions", "categories"
   add_foreign_key "working_files", "master_lists"

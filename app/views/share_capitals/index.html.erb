@@ -1,0 +1,23 @@
+<div class="bg-white py-3 px-5 shadow mt-5 rounded">
+  <h1>Share Capitals</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Amount</th>
+        <th>Status</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @share_capitals.each do |share_capital| %>
+        <tr>
+          <td><%= share_capital.amount %></td>
+          <td><span class="status_tag <%= share_capital.status.to_sym %>"><%= share_capital.status %></span></td>
+          <td><%= link_to 'Show', share_capital %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br>
+  <%= link_to 'New Share Capital', new_share_capital_path %>
+</div>

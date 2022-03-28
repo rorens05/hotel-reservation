@@ -1,0 +1,24 @@
+<div class="bg-white py-3 px-5 shadow mt-5 rounded">
+  <p id="notice"><%= notice %></p>
+  <h1>Share Capital Withdrawals</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Amount</th>
+        <th>Status</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @share_capital_withdrawals.each do |share_capital_withdrawal| %>
+        <tr>
+          <td><%= share_capital_withdrawal.amount %></td>
+          <td><span class="status_tag <%= share_capital_withdrawal.status.to_sym %>"><%= share_capital_withdrawal.status %></span></td>
+          <td><%= link_to 'Show', share_capital_withdrawal %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br>
+  <%= link_to 'New Share Capital Withdrawal', new_share_capital_withdrawal_path %>
+</div>

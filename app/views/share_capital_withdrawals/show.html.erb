@@ -1,0 +1,19 @@
+<div class="bg-white py-3 px-5 shadow mt-5 rounded">
+  <p id="notice"><%= notice %></p>
+  <p>
+    <strong>Amount:</strong>
+    <%= @share_capital_withdrawal.amount %>
+  </p>
+  <p>
+    <strong>Content:</strong>
+    <%= @share_capital_withdrawal.content %>
+  </p>
+  <p>
+    <strong>Admin note:</strong>
+    <%= @share_capital_withdrawal.admin_note %>
+  </p>
+  <p>
+    <strong>Status:</strong>
+    <span class="status_tag <%= @share_capital_withdrawal.status.to_sym %>"><%= @share_capital_withdrawal.status %></span>
+  </p>
+</div>

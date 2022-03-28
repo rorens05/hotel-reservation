@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :share_capital_withdrawals
+  resources :share_capitals
   resources :problem_forms
   resources :membership_withdrawals
   get 'faq' => 'home#faq'
