@@ -1,8 +1,7 @@
 <div class="bg-white py-3 px-5 shadow mt-5 rounded">
-  <p id="notice"><%= notice %></p>
+  <br/>
   <p>
-    <strong>Content:</strong>
-    <%= @membership_withdrawal.content %>
+    I <%= current_user.name %>, member of LDTC would like to withdraw my membership. This is due to the following reasons: <%= @membership_withdrawal.content %>.
   </p>
   <p>
     <strong>Admin note:</strong>

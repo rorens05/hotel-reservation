@@ -17,14 +17,13 @@ ActiveAdmin.register MembershipWithdrawal do
 
   show do
     attributes_table do
-      row :user
-      row :content
       row :admin_note
       row :status do |membership_withdrawal|
         status_tag membership_withdrawal.status
       end
       row :created_at
     end
+    para "I #{membership_withdrawal.user.name}, member of LDTC would like to withdraw my membership. This is due to the following reasons: #{membership_withdrawal.content}"
   end
 
 end
