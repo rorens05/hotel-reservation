@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  room: one
+  price: 9.99
+  schedule: 2022-04-21 11:36:22
+  status: 1
+  payment_method: 1
+  note: MyText
+
+two:
+  user: two
+  room: two
+  price: 9.99
+  schedule: 2022-04-21 11:36:22
+  status: 1
+  payment_method: 1
+  note: MyText

@@ -439,3 +439,51 @@ html,
   background-position: center;
   background-size: 100vw 100vh;
 }
+
+.bg-green {
+  background-color: #076504;
+}
+
+.navbar-collapse {
+  justify-content: space-between;
+}
+
+.hotel-container {
+  width: 100% !important;
+  display: flex;
+  flex-wrap: wrap;
+
+  width: 250px;
+  .hotel-item {
+    margin-right: 12px;
+    position: relative;
+    .card-body {
+      li {
+        list-style: circle !important;
+        margin-left: 16px !important;
+      }
+    }
+    img {
+      width: 250px;
+      height: 200px;
+      object-fit: cover;
+    }
+    .price {
+      position: absolute;
+      top: 80px;
+      background-color: #00000096;
+      width: 100%;
+      color: white;
+      padding: 8px 4px;
+    }
+  }
+}
+
+.info-table {
+  th {
+    width: 100px;
+  }
+  th {
+    font-size: 14px !important;
+  }
+}

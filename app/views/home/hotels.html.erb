@@ -1,0 +1,22 @@
+<div class="container">
+  <h1 class="mt-5">Hotels</h1>
+  <% if params[:search].present? %>
+    <p>Search result for <b><%= params[:search] %></b></p>
+  <% end %>
+  <div class="hotel-container ">
+    <% @hotels.each do |hotel| %>
+      <div class="hotel-item border rounded shadow mb-3">
+        <% if hotel.image.attached? %>
+          <%= image_tag hotel.image, class: 'card-img-top' %>
+        <% else %>
+          <img class="card-img-top" src="holder.js/100px180/" alt="">
+        <% end %>
+        <div class="card-body">
+          <h4 class="card-title"><%= hotel.name %></h4>
+          <p class="card-text"><%= hotel.description&.html_safe %></p>
+          <%= link_to "Details", "hotels/#{hotel.id}", class: 'btn btn-success btn-sm' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

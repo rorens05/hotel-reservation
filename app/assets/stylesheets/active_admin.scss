@@ -7,6 +7,8 @@
 @import "select2-bootstrap";
 @import "active_admin_datetimepicker";
 @import "daterangepicker";
+@import "font-awesome/font-awesome";
+@import "activeadmin/froala_editor_input";
 
 .status_tag {
   &.active,
@@ -16,19 +18,23 @@
   &.ready,
   &.regular,
   &.membership_fee,
+  &.paid,
   &.income {
     background-color: green;
   }
   &.inactive,
   &.unverified,
   &.google,
+  &.cancelled,
   &.withdrawal,
+  &.unpaid,
   &.rejected,
   &.expense {
     background-color: red;
   }
   &.in_progress,
   &.capital_share,
+  &.cod,
   &.associate {
     background-color: orange;
   }
@@ -37,6 +43,7 @@
     background-color: rgb(135, 135, 135);
   }
   &.facebook,
+  &.gcash,
   &.consolidation,
   &.pending {
     background-color: blue;
@@ -233,107 +240,8 @@
   display: none;
 }
 
-.header-item#tabs {
-  border-right: 10px solid #4554ff;
-  background-color: #a0a9f4;
-
-  .menu_item {
-    &.current {
-      a {
-        background-color: #4554ff !important;
-        color: white;
-      }
-    }
-    a {
-      color: black;
-      text-transform: capitalize;
-      font-weight: bold;
-      &:hover {
-        background-color: #4554ff !important;
-        color: white;
-      }
-    }
-
-    .menu {
-      background-color: #a0a9f4 !important;
-    }
-  }
-}
-
-.site_title,
-.header-item {
-  border-bottom: 3px solid #4554ff !important;
-  background-color: #a0a9f4 !important;
-}
-
 .index {
-  background-color: #eff0ff;
-}
-
-// message
-.message-item-active {
-  border: 1px solid $primary_color !important;
-}
-
-.message-container {
-  height: 55vh;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column-reverse;
-
-  .recipient-message {
-    display: flex;
-    flex-direction: row;
-    .message-content {
-      max-width: 400px;
-      .value {
-        color: black;
-        background-color: rgb(220, 220, 220);
-        padding: 4px 12px;
-        border-radius: 8px;
-      }
-      margin-right: 8px;
-      .attachment-container {
-        width: 100%;
-      }
-    }
-  }
-  .sender-message {
-    display: flex;
-    flex-direction: row-reverse;
-    margin-bottom: 16px;
-    .message-content {
-      max-width: 400px;
-      .value {
-        color: white;
-        background-color: $primary_color;
-        padding: 4px 12px;
-        border-radius: 8px;
-      }
-      margin-right: 8px;
-      .attachment-container {
-        width: 100%;
-      }
-    }
-  }
-}
-
-.input-message {
-}
-
-.message-avatar {
-  width: 30px;
-  height: 30px;
-  border-radius: 25px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: $primary_color;
-  text-align: center;
-  font-weight: bold;
-  color: white;
-  margin-right: 8px;
-  object-fit: cover;
+  background-color: #effff0;
 }
 
 .dashboard {
@@ -344,7 +252,7 @@
 }
 
 .login-bg {
-  background-color: rgb(179, 190, 255) !important;
+  background-color: rgb(222, 255, 225) !important;
 }
 
 .menu .menu_item.current a {
@@ -353,20 +261,6 @@
 
 .menu .menu_item a {
   background-color: #a0a9f4 !important;
-  color: white !important;
-}
-
-#tabs.header-item .menu_item.current.has_nested .menu .menu_item.current a {
-  background-color: #4554ff !important;
-  color: white !important;
-}
-#tabs.header-item .menu_item.current.has_nested .menu .menu_item a {
-  background-color: #a0a9f4 !important;
-  color: black !important;
-}
-
-.in-range.available {
-  background-color: #357ebd !important;
   color: white !important;
 }
 
@@ -426,40 +320,19 @@
   background-size: contain;
 }
 
-.menu_item#dashboard a::before {
-  background-image: url(/images/icon/dashboard.png);
-}
-
-.menu_item#master_lists a::before {
-  background-image: url(/images/icon/masterlist.png);
-}
-
-.menu_item#working_files a::before {
-  background-image: url(/images/icon/records.png);
-}
-
-.menu_item#notifications a::before {
-  background-image: url(/images/icon/notifications.png);
-}
-
-.menu_item#messages a::before {
-  background-image: url(/images/icon/chat.png);
-}
-
-.menu_item#reports a::before {
-  background-image: url(/images/icon/reports.png);
-}
-
-.menu_item#about a::before {
-  background-image: url(/images/icon/about.png);
+.menu_item#dashboard a::before,
+.menu_item#booking_transactions a::before,
+.menu_item#rooms a::before,
+.menu_item#hotels a::before {
+  background-image: url(/images/icon/circle.png);
 }
 
 .menu_item#users a::before {
-  background-image: url(/images/icon/users.png);
+  background-image: url(/images/icon/circle.png);
 }
 
 .menu_item#admins a::before {
-  background-image: url(/images/icon/admin.png);
+  background-image: url(/images/icon/circle.png);
 }
 
 .table {
@@ -479,5 +352,44 @@
     width: auto !important;
     padding: 10px !important;
     display: inline-block;
+  }
+}
+
+.select2-container--default .select2-search--dropdown .select2-search__field {
+  padding: 14px 4px;
+}
+
+.fr-box.fr-basic.fr-top {
+  width: 50% !important;
+  display: inline-block !important;
+}
+
+.froala_editor li,
+td li {
+  list-style: circle !important;
+}
+
+.admin-gallery {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  .admin-gallery-item {
+    img,
+    video {
+      width: 250px;
+      height: 250px;
+      object-fit: cover;
+      object-position: center;
+      margin-left: 12px;
+      margin-bottom: 12px;
+    }
+  }
+}
+
+#tabs {
+  a {
+    line-height: normal;
+    padding-top: 4px !important;
+    padding-bottom: 4px !important;
   }
 }

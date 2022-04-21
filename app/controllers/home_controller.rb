@@ -5,7 +5,13 @@ class HomeController < ApplicationController
   def index;
   end
 
-  def faq
+  def hotels 
+    @hotels = Hotel.all
+    @hotels = @hotels.where("name LIKE ?", "%#{params[:search]}%") if params[:search].present?
+  end
+
+  def hotel_information
+    @hotel = Hotel.find(params[:id])
 
   end
 

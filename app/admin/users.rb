@@ -55,9 +55,9 @@ ActiveAdmin.register User do
     end
     column :email
     column :contact_number
-    column :verified do |user|
-      status_tag user.verified?
-    end
+    # column :verified do |user|
+    #   status_tag user.verified?
+    # end
     actions
   end   
   

@@ -1,7 +1,7 @@
 class ProfileController < ApplicationController
   before_action :authenticate_user!
   before_action :set_navigation_name
-  layout 'dashboard'
+  layout 'application'
 
   def change_password
     @user = current_user

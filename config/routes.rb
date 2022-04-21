@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   resources :share_capitals
   resources :problem_forms
   resources :membership_withdrawals
+  get 'hotels' => 'home#hotels'
+  get 'about' => 'home#about'
+  get 'contact_us' => 'home#contact_us'
+  get 'hotels/:id' => 'home#hotel_information'
   get 'faq' => 'home#faq'
   get 'profile' => 'profile#index'
   get 'profile/change_password'

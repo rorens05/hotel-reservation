@@ -11,7 +11,7 @@
         <br>
         <br>
         <div class="login-container px-4 py-5 bg-white rounded shadow" style="background-color: rgba(255,255,255,0.8) !important">
-          <h3 class="text-center ">LDTC MEMBER LOGIN</h3>
+          <h3 class="text-center ">LOGIN</h3>
           <hr/>
           <% if alert.present? %>
             <p class="text-danger"><%= alert %></p>
@@ -33,11 +33,10 @@
               <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
             </div>
             <div class="form-actions">
-              <%= f.button :submit, "Log in", class: 'btn btn-primary rounded-pill px-5 d-block mx-auto' %>
+              <%= f.button :submit, "Log in", class: 'btn btn-primary rounded-pill px-5 d-block mx-auto', style: 'width: 100% !important'  %>
             </div>
             <p class="text-center mt-3">or</p>
-            <a class="btn btn-outline-primary rounded-pill px-5 d-block mx-auto" href="/users/sign_up">Register</a>
-            <a class="register-link mt-5" href="/faq">FAQ</a>
+            <a class="btn btn-outline-primary rounded-pill px-5 d-block mx-auto"  href="/users/sign_up">Register</a>
           <% end %>
         </div>
       </div>

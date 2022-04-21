@@ -1,0 +1,55 @@
+<div class="container">
+  <h1 class="mt-5">Hotel Information</h1>
+  <table class="table info-table">
+    <tr>
+      <th>Name</th>
+      <td><%= @hotel.name %></td>
+    </tr>
+    <tr>
+      <th>Website</th>
+      <td><%= @hotel.website %></td>
+    </tr>
+    <tr>
+      <th>Phone</th>
+      <td><%= @hotel.phone %></td>
+    </tr>
+    <tr>
+      <th>Email</th>
+      <td><%= @hotel.email %></td>
+    </tr>
+  </table>
+  <h4 class="mt-5">Description</h4>
+  <%= @hotel.description&.html_safe %>
+  <h4 class="mt-5">Rules And Policy</h4>
+  <%= @hotel.rules_and_policy&.html_safe %>
+  <h4 class="mt-5">Gallery</h4>
+  <div class="gallery-container ">
+    <div class="admin-gallery">
+      <% @hotel.gallery.each do |gallery| %>
+        <div class="admin-gallery-item">
+          <% if  gallery.attachment.attached? %>
+            <%= image_tag gallery.attachment, class: 'width-100' if gallery.file_type == "Image" %>
+            <%= video_tag url_for(gallery.attachment), size: "250x250", controls: true  if gallery.file_type == "Video" %>
+          <% end %></div>
+      <% end %>
+    </div>
+  </div>
+  <h4 class="mt-5">Rooms</h4>
+  <div class="hotel-container ">
+    <% @hotel.rooms.each do |room| %>
+      <div class="hotel-item border rounded shadow mb-3">
+        <% if room.image.attached? %>
+          <%= image_tag room.image, class: 'card-img-top' %>
+        <% else %>
+          <img class="card-img-top" src="holder.js/100px180/" alt="">
+        <% end %>
+        <p class="price"><%= format_currency room.price %></p>
+        <div class="card-body">
+          <h4 class="card-title"><%= room.name %></h4>
+          <p class="card-text"><%= room.description&.html_safe %></p>
+          <%= link_to "Book Now", "rooms/#{room.id}", class: 'btn btn-success btn-sm' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

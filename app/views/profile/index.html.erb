@@ -44,12 +44,8 @@
           <td><%= current_user.verified_at.present? ? "Verified" : "Unverified" %></td>
         </tr>
       </table>
+      <%= link_to "Update Profile", profile_change_password_path, class: 'btn btn-success' %>
+      <%= link_to "Change password", profile_change_password_path, class: 'btn btn-success' %>
     </div>
   </div>
-  <br>
-  <br>
-  <br>
-  <hr>
-  <br>
-  <br>
 </div>
