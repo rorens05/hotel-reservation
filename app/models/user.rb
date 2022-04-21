@@ -33,11 +33,6 @@ class User < ApplicationRecord
   validates :middle_name, presence: true
   validates :gender, presence: true
   # validates :address, presence: true
-  validates :sss, presence: true
-  validates :tin, presence: true
-  validates :philhealth, presence: true
-  validates :pag_ibig, presence: true
-  validates :image, presence: true
 
   def verified?
     verified_at.present? ? "Verified" : "Unverified"

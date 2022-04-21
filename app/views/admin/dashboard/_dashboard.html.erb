@@ -1,13 +1,5 @@
 <div class="dashboard-container">
   <h4>Users per day</h4>
-  <%= line_chart User.group_by_day(:created_at).count %>
+  <%= line_chart [] %>
   <br>
-  <% WorkingFile.particulars.keys.each do |particular| %>
-    <% data = WorkingFile.all.where(particular: particular) %>
-    <% if data.count.positive? %>
-      <h4><%= "#{particular.titleize} ledger per day" %></h4>
-      <%= line_chart data.group_by_day(:or_date).sum(:amount), prefix: "₱" %>
-    <% end %>
-    <br>
-  <% end %>
 </div>

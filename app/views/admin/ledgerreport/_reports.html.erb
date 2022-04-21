@@ -1,59 +1,6 @@
 <%= render 'filter_form', start_date: start_date, end_date: end_date, particular: particular, user: user %>
 <div class="report-container">
   <div class="report-header" style="text-align: center">
-    <h2 style="margin: 0">
-      LINGAYEN DAGUPAN TRANSPORT COOPERATIVE
-    </h2>
-    <p style="margin: 0">
-      Brgy. Quibaol West, Highway, Lingayen Pangasinan
-    </p>
-    <p style="margin: 0">CDA Registration No. 9520-1010000000045365</p>
-    <p style="margin: 0">TIN N0. 737-879-958-000</p>
-    <h2 style="margin-top: 12px; margin-bottom: 4px">Ledger Report</h2>
     <h4 style="margin: 0"><%= format_daterange(start_date, end_date) %></h4>
-    <h4 style="margin: 0; margin-bottom: 40px"><%= user&.name.present? ? "#{user&.name}'s" : "All" %> Ledgers</h4>
-    <h4 style="margin: 0; margin-bottom: 40px"><%= particular.titleize || "All" %> Particular</h4>
   </div>
-  <table class="report-table">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Particular</th>
-        <th>Amount</th>
-        <th>Date</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% working_files = WorkingFile.joins(:master_list).all.where("working_files.or_date > ?", start_date.beginning_of_day).where("working_files.or_date < ?", end_date.end_of_day) %>
-      <%# master_lists = master_lists.where(user_id: user&.id) if user.present? %>
-      <% working_files = working_files.where(master_lists: {user_id: user.id}) if user.present? %>
-      <% working_files = working_files.where(particular: particular) if particular != 'all' %>
-      <% working_files.each do |working_file| %>
-        <tr>
-          <td><%= working_file.master_list.user.name %></td>
-          <td><%= working_file.particular.titleize %></td>
-          <td><%= format_currency working_file.amount %></td>
-          <td><%=  working_file.or_date %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-  <table class="summary-table" style="width: 250px;">
-    <tr>
-      <th style="width: 180px;">Total Membership Fee</th>
-      <td style="border-bottom: none; text-align: right"><%= format_currency working_files.where(particular: 'membership_fee').sum(:amount) %></td>
-    </tr>
-    <tr>
-      <th style="width: 180px;">Total Capital Share</th>
-      <td style="border-bottom: none; text-align: right"><%= format_currency working_files.where(particular: 'capital_share').sum(:amount) %></td>
-    </tr>
-    <tr>
-      <th style="width: 180px;">Total Withdrawal</th>
-      <td style="border-bottom: none; text-align: right"><%= format_currency working_files.where(particular: 'withdrawal').sum(:amount) %></td>
-    </tr>
-    <tr>
-      <th style="width: 180px;">Total Consolidation</th>
-      <td style="border-bottom: none; text-align: right"><%= format_currency working_files.where(particular: 'consolidation').sum(:amount) %></td>
-    </tr>
-  </table>
 </div>

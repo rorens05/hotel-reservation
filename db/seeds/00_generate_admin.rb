@@ -1,6 +1,6 @@
-AdminUser.find_or_create_by(email: 'hadriansison@gmail.com').update_attributes(
-  name: 'Hadrian Aquino Sison',
+AdminUser.find_or_create_by(email: 'admin@example.com').update_attributes(
+  name: 'Laurence Bautista',
   role: 'Super Admin',
   status: 'Active',
-  password: 'Group5'
+  password: 'Password@123'
 )

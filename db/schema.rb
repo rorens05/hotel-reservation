@@ -10,20 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_28_060943) do
-
-  create_table "accounts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "name"
-    t.bigint "bank_id", null: false
-    t.string "account_name"
-    t.string "account_number"
-    t.decimal "amount", precision: 10, scale: 2
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.bigint "user_id", null: false
-    t.index ["bank_id"], name: "index_accounts_on_bank_id"
-    t.index ["user_id"], name: "index_accounts_on_user_id"
-  end
+ActiveRecord::Schema.define(version: 2021_10_11_122443) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "namespace"
@@ -75,135 +62,6 @@ ActiveRecord::Schema.define(version: 2022_03_28_060943) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
-  create_table "banks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
-    t.integer "transaction_type"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "cities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "province_id", null: false
-    t.string "name"
-    t.string "code"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["province_id"], name: "index_cities_on_province_id"
-  end
-
-  create_table "master_lists", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.decimal "share_capital", precision: 10
-    t.decimal "withdrawal", precision: 10
-    t.decimal "balance", precision: 10
-    t.decimal "membership_fee", precision: 10
-    t.decimal "consolidation", precision: 10
-    t.integer "status"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_master_lists_on_user_id"
-  end
-
-  create_table "membership_withdrawals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.text "content"
-    t.text "admin_note"
-    t.integer "status", default: 0
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_membership_withdrawals_on_user_id"
-  end
-
-  create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "admin_user_id", null: false
-    t.bigint "user_id", null: false
-    t.text "content"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "sender"
-    t.index ["admin_user_id"], name: "index_messages_on_admin_user_id"
-    t.index ["user_id"], name: "index_messages_on_user_id"
-  end
-
-  create_table "mobile_releases", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.integer "build_code"
-    t.integer "update_type"
-    t.boolean "maintenance_mode"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "problem_forms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.datetime "date_of_incident"
-    t.string "place"
-    t.text "content"
-    t.text "admin_note"
-    t.integer "status", default: 0
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_problem_forms_on_user_id"
-  end
-
-  create_table "provinces", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "region_id", null: false
-    t.string "name"
-    t.string "code"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["region_id"], name: "index_provinces_on_region_id"
-  end
-
-  create_table "regions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "name"
-    t.string "code"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "share_capital_withdrawals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.decimal "amount", precision: 10
-    t.text "content"
-    t.text "admin_note"
-    t.integer "status", default: 0
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_share_capital_withdrawals_on_user_id"
-  end
-
-  create_table "share_capitals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.decimal "amount", precision: 10
-    t.text "content"
-    t.text "admin_note"
-    t.integer "status", default: 0
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_share_capitals_on_user_id"
-  end
-
-  create_table "transactions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "account_id", null: false
-    t.bigint "category_id", null: false
-    t.decimal "amount", precision: 10, scale: 2
-    t.text "note"
-    t.datetime "schedule"
-    t.integer "status"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["account_id"], name: "index_transactions_on_account_id"
-    t.index ["category_id"], name: "index_transactions_on_category_id"
-  end
-
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -250,39 +108,9 @@ ActiveRecord::Schema.define(version: 2022_03_28_060943) do
     t.datetime "last_online"
     t.string "middle_name"
     t.string "address"
-    t.string "sss"
-    t.string "tin"
-    t.string "philhealth"
-    t.string "pag_ibig"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "working_files", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "or_no"
-    t.date "or_date"
-    t.bigint "master_list_id", null: false
-    t.integer "particular"
-    t.integer "member"
-    t.decimal "amount", precision: 10, scale: 2
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["master_list_id"], name: "index_working_files_on_master_list_id"
-  end
-
-  add_foreign_key "accounts", "banks"
-  add_foreign_key "accounts", "users"
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "cities", "provinces"
-  add_foreign_key "master_lists", "users"
-  add_foreign_key "membership_withdrawals", "users"
-  add_foreign_key "messages", "admin_users"
-  add_foreign_key "messages", "users"
-  add_foreign_key "problem_forms", "users"
-  add_foreign_key "provinces", "regions"
-  add_foreign_key "share_capital_withdrawals", "users"
-  add_foreign_key "share_capitals", "users"
-  add_foreign_key "transactions", "accounts"
-  add_foreign_key "transactions", "categories"
-  add_foreign_key "working_files", "master_lists"
 end
