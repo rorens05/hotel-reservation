@@ -1,0 +1,40 @@
+<div class="container">
+  <h1 class="mt-5">Room Information</h1>
+  <div class="row">
+    <div class="col-sm-3">
+      <% if @room.image.attached? %>
+        <%= image_tag @room.image, class: 'width-100' %>
+      <% else %>
+        <%= image_tag '/images/no-image.png', class: 'width-100' %>
+      <% end %>
+    </div>
+    <div class="col-sm-5">
+      <table class="table info-table">
+        <tr>
+          <th>Name</th>
+          <td><%= @room.name %></td>
+        </tr>
+        <tr>
+          <th>Hotel</th>
+          <td><%= link_to @room.hotel.name, home_hotel_information_path(@room.hotel_id) %></td>
+        </tr>
+        <tr>
+          <th>Price</th>
+          <td><%= format_currency @room.price %></td>
+        </tr>
+      </table>
+      <h4 class="mt-5">Description</h4>
+      <%= @room.description&.html_safe %>
+    </div>
+    <div class="col-sm-4">
+      <div class="bg-white border p-3">
+        <h3>Reserve Room</h3>
+        <%= simple_form_for @booking_transaction, url: home_book_hotel_path(@room.id), method: :post do |f| %>
+          <%= f.input :schedule, as: :datetime, html5: true %>
+          <%= f.input :payment_method, as: :select, collection: BookingTransaction.payment_methods.keys %>
+          <%= f.input :note %>
+          <%= f.button :submit, "BOOK NOW", style: 'padding: 12px; font-size: 16px; font-weight: bold' %>
+        <% end %>
+      </div>
+    </div>
+  </div>

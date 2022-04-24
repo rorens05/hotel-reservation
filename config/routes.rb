@@ -4,9 +4,12 @@ Rails.application.routes.draw do
   resources :problem_forms
   resources :membership_withdrawals
   get 'hotels' => 'home#hotels'
+  get 'hotels/rooms/:id' => 'home#rooms', as: :home_rooms
   get 'about' => 'home#about'
   get 'contact_us' => 'home#contact_us'
-  get 'hotels/:id' => 'home#hotel_information'
+  get 'hotels/:id' => 'home#hotel_information', as: :home_hotel_information
+  post 'book_hotel/:id' => 'home#book_hotel', as: :home_book_hotel
+  get 'orders' => 'home#orders', as: :home_orders
   get 'faq' => 'home#faq'
   get 'profile' => 'profile#index'
   get 'profile/change_password'
