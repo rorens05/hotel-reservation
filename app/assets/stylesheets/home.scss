@@ -487,3 +487,19 @@ html,
     font-size: 14px !important;
   }
 }
+
+.static-container {
+  overflow: hidden;
+  position: relative;
+  min-height: 100vh;
+  .about-square-top {
+    position: absolute;
+    right: -300px;
+    top: -300px;
+    width: 600px;
+    height: 600px;
+    background-color: #c09a3f;
+    border: 10px solid white;
+    transform: rotateY(0deg) rotate(45deg);
+  }
+}
