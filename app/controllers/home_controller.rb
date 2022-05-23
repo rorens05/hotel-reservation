@@ -42,6 +42,11 @@ class HomeController < ApplicationController
     @booking_transactions = BookingTransaction.where(user_id: current_user.id)
   end
 
+  def transaction_information
+    @booking_transaction = BookingTransaction.find(params[:id])
+
+  end
+
   private 
 
   def booking_transaction_params 
@@ -49,6 +54,7 @@ class HomeController < ApplicationController
   end
 
   def custom_layout 
+    return 'report' if action_name = 'transaction_information'
     'application'
   end
 end

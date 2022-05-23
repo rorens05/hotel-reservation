@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :problem_forms
   resources :membership_withdrawals
   get 'hotels' => 'home#hotels'
+  get 'transaction_information/:id' => 'home#transaction_information', as: :home_transaction_information
   get 'hotels/rooms/:id' => 'home#rooms', as: :home_rooms
   get 'about' => 'home#about'
   get 'contact_us' => 'home#contact_us'

@@ -503,3 +503,18 @@ html,
     transform: rotateY(0deg) rotate(45deg);
   }
 }
+
+.report-reciept {
+  width: 500px;
+  margin: 20px auto;
+  padding: 12px;
+  border: 1px solid black;
+}
+
+.table-label {
+  width: 100px !important;
+}
+
+.fill-up {
+  border-bottom: 1px solid black;
+}

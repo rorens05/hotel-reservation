@@ -1,7 +1,7 @@
 <h1 class="text-center mt-5">Orders</h1>
 <div class="list-group px-3">
   <% @booking_transactions.each do |booking_transaction| %>
-    <a href=<%= home_rooms_path(booking_transaction.room_id) %> class="list-group-item list-group-item-action flex-column align-items-start">
+    <a href=<%= home_transaction_information_path(booking_transaction.id) %> class="list-group-item list-group-item-action flex-column align-items-start">
       <div class="d-flex w-100 justify-content-between">
         <h5 class="mb-1"><%= booking_transaction.room.name %></h5>
         <span class="status_tag <%= booking_transaction.status&.downcase %>"><%= booking_transaction.status.titleize %></span>
