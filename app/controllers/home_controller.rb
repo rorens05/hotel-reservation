@@ -54,7 +54,12 @@ class HomeController < ApplicationController
   end
 
   def custom_layout 
-    return 'report' if action_name = 'transaction_information'
-    'application'
+    
+    binding.pry
+    
+    if action_name == 'transaction_information'
+      return 'report' 
+    end
+    return 'application'
   end
 end
