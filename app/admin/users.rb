@@ -74,10 +74,6 @@ ActiveAdmin.register User do
     f.input :email
     f.input :gender
     f.input :birthday, as: :date_picker
-    f.input :sss, label: 'SSS'
-    f.input :tin, label: 'TIN'
-    f.input :philhealth, label: 'PHILHEALTH'
-    f.input :pag_ibig, label: 'PAGIBIG'
     f.input :password
     f.input :password_confirmation
     f.actions
